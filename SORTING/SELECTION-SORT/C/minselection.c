@@ -1,21 +1,24 @@
-//BUBBLE SORT
-//ASCENDING ORDER
-//STABLE SORT
+//SELECTION SORT
+//USING MIN ELEMENT
+//DESCENDING SORT
 #include <stdio.h>
-void bubblesort(int arr[],int n)
+void selectionsort(int arr[],int n)
 {
+    int min=0;
     for(register int i=n-1;i>=0;i--)
     {
+        min=i;
         for(register int j=0;j<i;j++)
         {
-            if(arr[j]>arr[j+1])
+            if(arr[min]>arr[j])
             {
-                //swap
-                int temp = arr[j+1];
-                arr[j+1] = arr[j];
-                arr[j] = temp;
+                min=j;
             }
         }
+        //swap
+        int temp = arr[i];
+        arr[i] =arr[min];
+        arr[min]=temp;
     }
 }
 int main()
@@ -29,8 +32,7 @@ int main()
     {
         scanf("%d",&arr[i]);
     }
-    bubblesort(arr,n);
-    printf("The sorted array:\n");
+    selectionsort(arr,n);
     for(register int i=0;i<n;i++)
     {
         printf("%d ",arr[i]);
